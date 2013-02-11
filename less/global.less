@@ -1,0 +1,73 @@
+// Opacity
+.opacity(@opacity) when (@opacity < 1.0){
+    opacity: @opacity;
+    @ie-opacity: round(@opacity * 100);
+    filter: ~"alpha(opacity=@{ie-opacity})"; // IE8
+}
+
+// IE renders text without anti-aliasing when using filter: alpha(opacity=100)
+.opacity(@opacity) when (@opacity >= 1.0){
+    opacity: @opacity;
+    filter: none; // IE8
+}
+
+// Box Shadows
+.box-shadow(@boxshadow: 0 0 5px @contentShadow) {
+    -webkit-box-shadow: @boxshadow;
+    box-shadow: @boxshadow;
+}
+
+// Border Radius
+.border-radius(@radius: @baseBorderRadius) { // defaults to @baseBorderRadius (see variables above) if the @radius parameter is not passed in
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+    .background-clip(padding-box);
+}
+
+.background-clip(@clip) when (@clip = padding-box) {
+    -moz-background-clip: padding;  // FF3.6 and earlier uses padding instead of padding-box
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+.background-clip(@clip) when not (@clip = padding-box){
+    -moz-background-clip: @clip;  // useful if you don't want a bg color from leaking outside the border when using border-radius
+    -webkit-background-clip: @clip;
+    background-clip: @clip;
+}
+
+.box-sizing(@sizing: border-box) { // defaults to border-box if the @sizing parameter is not passed in
+    -webkit-box-sizing: @sizing;
+    -moz-box-sizing: @sizing;
+    box-sizing: @sizing;
+}
+
+// Shapes
+.square(@length) {
+    width: @length;
+    height: @length;
+}
+
+.circle(@diameter) {
+    width: @diameter;
+    height: @diameter;
+    .border-radius(@diameter/2);
+}
+
+// Centering
+.centered() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.centered(@width) {
+    .centered(@width, @width);
+}
+
+.centered(@width, @height) {
+    .centered();
+    margin-left: -@width/2;
+    margin-top: -@height/2;
+}

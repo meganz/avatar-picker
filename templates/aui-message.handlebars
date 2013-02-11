@@ -1,0 +1,12 @@
+<div class="aui-message{{#if type}} {{type}}{{/if}}{{#if closeable}} closeable{{/if}}{{#if extraClasses}} {{extraClasses}}{{/if}}">
+    {{#if title}}
+        <p class="title">
+            <strong>{{title}}</strong>
+        </p>
+    {{/if}}
+    {{contents}}
+    <span class="aui-icon{{#if type}} icon-{{type}}{{/if}}"></span>
+    {{#if closeable}}
+        <span class="aui-icon icon-close" role="button" tabindex="0"></span>
+    {{/if}}
+</div>

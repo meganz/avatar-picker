@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+        <title>Avatar Picker Demo</title>
+        <link rel="stylesheet" href="aui/css/aui-all.css" media="all">
+        <!--[if lt IE 9]><link rel="stylesheet" href="aui/css/aui-ie.css" media="all"><![endif]-->
+        <!--[if IE 9]><link rel="stylesheet" href="aui/css/aui-ie9.css" media="all"><![endif]-->
+        <link rel="stylesheet" type="text/css" href="css/image-explorer.css">
+        <link rel="stylesheet" type="text/css" href="css/image-upload-and-crop.css">
+        <link rel="stylesheet" type="text/css" href="lib/fd-slider/fd-slider.css">
+        <style>
+            #demo {
+                width: 324px;
+                margin: 0 auto;
+            }
+
+            #output {
+                display: none;
+                margin: 20px auto 0;
+            }
+
+            .aui-avatar-xxxxlarge,
+            .aui-avatar-xxxxlarge .aui-avatar-inner {
+                height: 256px;
+                width: 256px;
+            }
+
+            #crop-button {
+                display: none;
+                float: right;
+                position: relative;
+                margin-top: -30px;
+            }
+
+        </style>
+    </head>
+    <body class="aui-layout aui-theme-default">
+        <!--Most of this is AUI layout boiler plate, the demo specific content is marked below -->
+        <div id="page">
+            <section id="content" role="main">
+
+            <header id="header" role="banner">
+              <nav class="aui-header" role="navigation" style="float: none;">
+                <div class="aui-header-primary">
+                  <ul class="aui-nav">
+                    <li><a href="https://bitbucket.org/atlassianlabs/avatar-picker/src">View source on Bitbucket</a></li>
+                    <li><a href="http://atlassianlabs.bitbucket.org/">More Atlassian Labs demos</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </header>
+
+            <header class="aui-page-header">
+              <h1>Avatar Picker Demo</h1>
+            </header>
+
+            <div class="aui-page-panel">
+              <div class="aui-page-panel-inner">
+                <section class="aui-page-panel-content">
+
+                    <!-- ### Only this content is demo specific ### -->
+                    <div id="demo">
+                        <button id="crop-button" class="aui-button aui-button-primary">Crop</button>
+                    </div>
+                    <div id="output" class="aui-avatar aui-avatar-xxxxlarge aui-avatar-project">
+                        <div class="aui-avatar-inner">
+                            <img src="">
+                        </div>
+                    </div>
+                    <!-- ### End demo specific content ### -->
+
+                </section>
+              </div>
+            </div>
+
+            </section>
+            <footer id="footer" role="contentinfo">
+                <p>Created by <a href="http://atlassian.com/">Atlassian</a>. Our <a href="http://atlassian.com/company/trademark">Logos and Guidelines</a>.</p>
+            </footer>
+        </div>
+
+
+        <script src="aui/js/aui-all.js"></script>
+        <!--[if lt IE 9]><script src="aui/js/aui-ie.js"></script><![endif]-->
+        <script>window.$ = jQuery; //reset from AUI's noConflict jQuery</script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.2/handlebars.min.js"></script>
+
+        <script src="lib/fd-slider/fd-slider.js"></script>
+
+        <script src="templates/image-upload-and-crop.js"></script>
+        <script src="templates/aui-message.js"></script>
+
+        <script src="js/canvas-cropper.js"></script>
+        <script src="js/client-file-handler.js"></script>
+        <script src="js/client-file-reader.js"></script>
+        <script src="js/drag-drop-file-target.js"></script>
+        <script src="js/upload-interceptor.js"></script>
+        <script src="js/image-explorer.js"></script>
+        <script src="js/image-upload-and-crop.js"></script>
+        <script src="js/text-util.js"></script>
+
+        <script>
+        $(function(){
+            var $demo = $("#demo"),
+                $cropButton = $('#crop-button');
+                $output = $("#output");
+
+            $demo.prepend(Handlebars.templates['image-upload-and-crop']({}));
+
+            var imageUploadAndCrop = new ImageUploadAndCrop($demo.find('.image-upload-and-crop-container'),
+                {
+                    cropButton: $cropButton,
+                    onCrop: function(croppedDataURI){
+                        $output.find("img").attr('src', croppedDataURI);
+                        $output.show();
+                    },
+                    onImageUpload: function(){
+                        $cropButton.show();
+                    },
+                    onImageUploadError: function(){
+                        $cropButton.hide();
+                    }
+                }
+            );
+        });
+        </script>
+    </body>
+</html>

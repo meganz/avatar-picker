@@ -1,0 +1,27 @@
+<div class="image-upload-and-crop-container">
+    <div class="image-explorer-container {{#unless imageSrc}}empty{{/unless}}">
+        <div class="image-explorer-image-view">
+            <img class="image-explorer-source" {{#if imageSrc}}src="{{imageSrc}}"{{/if}}/>
+            <div class="image-explorer-mask circle-mask"></div>
+            <div class="image-explorer-drag-delegate"></div>
+        </div>
+        <div class="image-explorer-scale-slider-wrapper">
+            <input class="image-explorer-scale-slider {{#unless imageSrc}}disabled{{/unless}}"
+                type="range" min="0" max="100" step="1" value="0" {{#unless imageSrc}}disabled{{/unless}}/>
+        </div>
+    </div>
+    <form class="aui">
+        <input type="file" id="image-upload-and-crop-upload-field" class="image-upload-field" accept="image/jpeg, image/gif, image/png"/>
+        <label for="image-upload-and-crop-upload-field" class="image-upload-field-replacement aui-button">Select an image</label>
+        {{#if description}}
+            <div class="description">{{description}}</div>
+        {{/if}}
+        {{#if fallbackDescription}}
+            <div class="description fallback">{{fallbackDescription}}</div>
+        {{else}}
+            {{#if description}}
+                <div class="description fallback">{{description}}</div>
+            {{/if}}
+        {{/if}}
+    </form>
+</div>

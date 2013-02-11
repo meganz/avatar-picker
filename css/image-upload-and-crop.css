@@ -1,0 +1,38 @@
+.image-upload-and-crop-container.filereader-unsupported .description.fallback {
+  display: block;
+}
+.image-upload-and-crop-container.filereader-unsupported .description {
+  display: none;
+}
+.image-upload-and-crop-container .description.fallback {
+  display: none;
+}
+.image-upload-and-crop-container form.aui {
+  margin: 20px auto 0;
+}
+.image-upload-and-crop-container form.aui .spinner {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-left: -30px;
+}
+.image-upload-and-crop-container .image-upload-field {
+  display: none;
+}
+.image-upload-and-crop-container .image-upload-field[disabled] + .image-upload-field-replacement {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.image-upload-and-crop-container .image-upload-field[disabled] + .image-upload-field-replacement:hover {
+  border-color: #CCC;
+}
+.image-upload-and-crop-container .image-upload-field[disabled] + .image-upload-field-replacement:active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.image-upload-and-crop-container .image-upload-field-replacement {
+  color: #333;
+}
+.image-upload-and-crop-container .image-explorer-container {
+  margin: 0 auto;
+}
