@@ -1,5 +1,5 @@
 #Avatar Picker
-Recently in Stash we added [Project Avatars](https://confluence.atlassian.com/display/STASH/Stash+2.1+release+notes). We wanted to have a really slick user experience for uploading, translating and cropping images to be used as avatars, so we built the **Avatar Picker**.
+Recently in Stash we added [Project Avatars](https://confluence.atlassian.com/display/STASH/Stash+2.1+release+notes#Stash2.1releasenotes-ProjectAvatars). We wanted to have a really slick user experience for uploading, translating and cropping images to be used as avatars, so we built the **Avatar Picker**.
 
 ![Project Avatars](http://monosnap.com/image/quxJjJ3z90cpqC7tAVMGOFC4a.png)
 
@@ -145,7 +145,7 @@ One advantage of this method is that it uses a much of the pixel data from the o
 
 
 ##From us to you
-We've open sourced these components so feel free to use and learn from them for your own projects. All the avatar picker code is released under the MIT license. The code is available at [https://bitbucket.org/atlassianlabs/avatar-picker/src](https://bitbucket.org/atlassianlabs/avatar-picker/src).  
+We've made the code for the avatar picker available for you to read through and learn from for your own projects. The code is hosted at [https://bitbucket.org/atlassianlabs/avatar-picker/src](https://bitbucket.org/atlassianlabs/avatar-picker/src).  
 If you want to play around with a demo of the whole process of selecting an image through to handling the cropped result, you can check out [http://atlassianlabs.bitbucket.org/avatar-picker](http://atlassianlabs.bitbucket.org/avatar-picker).
 
 
