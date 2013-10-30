@@ -32,7 +32,11 @@ window.ImageExplorer = (function(){
         this.options         = $.extend({}, this.defaults, opts);
         this.imageProperties = {};
 
-        _.bindAll(this);
+        _.bindAll(this, 'getImageSrc', 'setImageSrc', 'initImage', 'initDragDelegate', 'initScaleSlider', 'setInitialScale',
+            'getFillScale', 'getContainedScale', 'getCircularContainedScale', 'sliderValToScale', 'scaleToSliderVal',
+            'updateImageScale', 'resetImagePosition', 'resetScaleSlider', 'toggleEmpty', 'get$ImageView', 'get$SourceImage',
+            'get$Mask', 'get$DragDelegate', 'getMaskedImageProperties', 'showError', 'clearError', 'hasValidImage',
+            '_resetFromError', '_removeError');
 
         this.toggleEmpty(true); //assume the explorer is empty initially and override below if otherwise
 

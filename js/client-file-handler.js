@@ -32,7 +32,7 @@ window.ClientFileHandler = (function(){
             this.options.fileCountLimit = this.defaults.fileCountLimit;
         }
 
-        _.bindAll(this);
+        _.bindAll(this, 'handleFiles', 'filterFiles');
 
         return this;
     };

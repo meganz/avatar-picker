@@ -33,7 +33,7 @@ window.ClientFileIframeUploader = (function(){
     };
 
     ClientFileIframeUploader.prototype.init = function(opts){
-        _.bindAll(this);
+        _.bindAll(this, 'createHiddenIframe', 'onIframeLoad', 'handleFiles', 'setStateInProgress', 'setStateIdle', 'cancelUpload');
         this.options = $.extend({}, this.defaults, opts);
         this.$uploadIframe = this.createHiddenIframe();
 
