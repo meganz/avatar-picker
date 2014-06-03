@@ -38,7 +38,8 @@ window.ClientFileReader = (function(){
         onRead: $.noop
     });
 
-    ClientFileReader.prototype.init = function(opts){
+    ClientFileReader.prototype.init = function(opts) {
+        _.bindAll(this, 'onSuccess', 'readFile');
         ClientFileHandler.prototype.init.call(this, opts);
 
         this.options.onSuccess = this.onSuccess; //We don't want this to be optional.

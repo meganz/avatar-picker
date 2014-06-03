@@ -29,7 +29,8 @@ window.ImageUploadAndCrop = (function(){
         this.options = $.extend({}, this.defaults, opts);
         this.$container = $container;
 
-        _.bindAll(this);
+        _.bindAll(this, 'crop', 'resetState', '_onFileProcessed', 'setImageSrc', 'validateImageResolution', '_onFilesError',
+            '_onFileError', '_resetFileUploadField', '_onErrorReset');
 
         this.imageExplorer = new ImageExplorer(this.$container.find('.image-explorer-container'), {
             initialScaleMode: this.options.initialScaleMode,
