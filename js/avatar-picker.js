@@ -932,8 +932,8 @@ window.ImageUploadAndCrop = (function(){
         if (invalidFiles && invalidFiles.bySize && invalidFiles.bySize.length){
             //Some image files of the correct type were filtered because they were too big. Pick the first one to use as an example.
             var file = _.first(invalidFiles.bySize);
-            this._onFileError('File "' + TextUtil.abbreviateText(file.name, 50) + '" is ' + TextUtil.formatSizeInBytes(file.size) +
-                ' which is larger than the maximum allowed size of ' + TextUtil.formatSizeInBytes(this.options.fileSizeLimit));
+            this._onFileError('File "' + str_mtrunc(file.name, 50) + '" is ' + bytesToSize(file.size) +
+                ' which is larger than the maximum allowed size of ' + bytesToSize(this.options.fileSizeLimit));
         } else {
             //No files of the correct type were uploaded. The default error message will cover this.
             this._onFileError();
