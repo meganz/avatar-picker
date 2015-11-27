@@ -1,10 +1,11 @@
+(function(window) {
+    
 /**
  * Functions from Underscore.js 1.4.4
  * http://underscorejs.org
  * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.
  * Underscore may be freely distributed under the MIT license.
  */
-(function(window) {
 var _ = {
     bind: function _Bind(ctx) {
         return (function(){}).bind.apply(ctx, [].slice.call(arguments, 1));
@@ -37,7 +38,13 @@ var _ = {
     }
 };
 
-
+/**
+ * Avatar Picker
+ * https://bitbucket.org/atlassianlabs/avatar-picker/src
+ * A combination of the JS source files required for the avatar picker to work.
+ * Built with command:
+ * cat canvas-cropper.js <(echo) client-file-handler.js <(echo) client-file-reader.js <(echo) drag-drop-file-target.js <(echo) upload-interceptor.js <(echo) image-explorer.js <(echo) image-upload-and-crop.js > avatar-picker.js
+ */
 window.CanvasCropper = (function(){
     function CanvasCropper(width, height){
         if (!CanvasCropper.isSupported()) {
