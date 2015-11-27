@@ -56,7 +56,7 @@ window.CanvasCropper = (function(){
     };
 
     CanvasCropper.prototype.defaults = {
-        outputFormat: 'image/png',
+        outputFormat: 'image/jpeg',
         backgroundFillColor: undefined
     };
 
@@ -165,6 +165,8 @@ window.CanvasCropper = (function(){
             cropHeight = newCropHeight;
         }
 
+        context.canvas.width = 250;
+        context.canvas.height = 250;
         context.drawImage(
             image,
             sourceX,
@@ -173,8 +175,8 @@ window.CanvasCropper = (function(){
             cropHeight,
             targetX,
             targetY,
-            targetWidth,
-            targetHeight
+            250,
+            250
         );
 
         return this;
@@ -182,7 +184,7 @@ window.CanvasCropper = (function(){
 
     CanvasCropper.prototype.getDataURI = function(outputFormat) {
         if (outputFormat) { //TODO: Check if in array of valid mime types
-            return this.canvas.toDataURL(outputFormat);
+            return this.canvas.toDataURL("image/jpeg", 0.85);
         } else {
             return null;
         }
@@ -698,8 +700,6 @@ window.ImageExplorer = (function(){
                 .val(initialValue)
                 .removeClass('disabled')
                 .removeAttr('disabled');
-
-        fdSlider.updateSlider(this.$scaleSlider.attr('id')); //fdSlider adds an id if the element didn't already have one.
     };
 
     ImageExplorer.prototype.toggleEmpty = function(toggle) {
@@ -747,20 +747,7 @@ window.ImageExplorer = (function(){
         this.toggleEmpty(true);
         this.$container.addClass('error');
 
-        var $errorMessage = $(Handlebars.templates['aui-message']({
-                type: 'error',
-                title: title,
-                contents: contents || '',
-                closeable: true
-            }));
-
-        $errorMessage.appendTo(this.$imageView).css({
-            'margin-top': -1 * $errorMessage.outerHeight() / 2
-        });
-
-        $errorMessage.on('messageClose', this._resetFromError);
-
-        AJS.messages.setup();
+        alert(title + ' ' + contents);
     };
 
     ImageExplorer.prototype.clearError = function() {
@@ -803,7 +790,7 @@ window.ImageUploadAndCrop = (function(){
 
     ImageUploadAndCrop.prototype.defaults = {
         HiDPIMultiplier: 2,  //The canvas crop size is multiplied by this to support HiDPI screens
-        dragDropUploadPrompt: 'Drag and drop image here',
+        dragDropUploadPrompt: l[1390],
         onImageUpload: $.noop,
         onImageUploadError: $.noop,
         onCrop: $.noop,
@@ -811,8 +798,8 @@ window.ImageUploadAndCrop = (function(){
         fallbackUploadOptions: {},
         initialScaleMode: ImageExplorer.scaleModes.containAndFill,
         scaleMax: 1,
-        fileSizeLimit: 5 * 1024 * 1024, //5MB
-        maxImageDimension: 2000 //In pixels
+        fileSizeLimit: 15 * 1024 * 1024, //5MB
+        maxImageDimension: 5000 //In pixels
     };
 
     ImageUploadAndCrop.prototype.init = function($container, opts){
@@ -1022,3 +1009,4 @@ window.TextUtil = (function(){
         }
     };
 })();
+})(this);
