@@ -1,3 +1,43 @@
+/**
+ * Functions from Underscore.js 1.4.4
+ * http://underscorejs.org
+ * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.
+ * Underscore may be freely distributed under the MIT license.
+ */
+(function(window) {
+var _ = {
+    bind: function _Bind(ctx) {
+        return (function(){}).bind.apply(ctx, [].slice.call(arguments, 1));
+    },
+    bindAll: function _bindAll(obj) {
+        [].slice.call(arguments, 1).forEach(function(f) {
+            obj[f] = _.bind(obj[f], obj);
+        });
+    },
+    each: function _each(obj, iterator, context) {
+        obj.forEach(iterator, context);
+    },
+    filter: function _filter(obj, iterator, context) {
+        return [].slice.call(obj).filter(iterator, context);
+    },
+    first: function _first(array, n, guard) {
+        if (array == null) {
+            return void 0;
+        }
+        return (n != null) && !guard ? array.slice(0, n) : array[0];
+    },
+    has: function _has(obj, prop) {
+        return obj.hasOwnProperty(prop);
+    },
+    isFunction: function _isFunction(func) {
+        return typeof func === 'function';
+    },
+    isRegExp: function _isRegExp(obj) {
+        return Object.prototype.toString.call(obj) === '[object RegExp]';
+    }
+};
+
+
 window.CanvasCropper = (function(){
     function CanvasCropper(width, height){
         if (!CanvasCropper.isSupported()) {
